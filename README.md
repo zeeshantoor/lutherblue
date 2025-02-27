@@ -1,4 +1,4 @@
-#Tech Stack: HTML, CSS, JS, AJAX
+#Tech Stack: PHP, HTML, CSS, JS, AJAX
 
 #Guidelines:
 
