@@ -1,0 +1,41 @@
+/* Tablet Styles (768px to 867px) */
+@media screen and (min-width: 768px) and (max-width: 867px) {
+    .container {
+        padding: 0 var(--spacing-md);
+        max-width: 960px;
+        margin: 0 auto;
+    }
+
+    /* .site-content {
+        padding: var(--spacing-md) 0;
+    } */
+    .site-header {
+        padding: 20px 0px;
+    }
+
+    .desktop-header {
+        padding: 0 var(--spacing-sm);
+    }
+
+    .custom-logo {
+        max-height: 50px;
+        width: 150px;
+    }
+
+    .primary-navigation li {
+        margin-right: 30px;
+    }
+
+    .header-actions li {
+        margin-right: 20px;
+    }
+
+    .header-actions li {
+        margin-left: 20px;
+    }
+
+    .primary-navigation a, .header-actions a {
+        font-size: 13px;
+    }
+    
+}
