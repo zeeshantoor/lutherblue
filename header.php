@@ -132,6 +132,10 @@
 
         <!-- Mobile Menu Panel -->
         <div id="mobile-menu-panel" class="mobile-menu-panel">
+            <div class="mobile-menu-close">
+                <span class="close-text">TAP TO CLOSE THE MENU</span>
+                <span class="close-icon">&times;</span>
+            </div>
             <div class="mobile-menu-inner">
                 <?php
                 wp_nav_menu(array(
@@ -141,6 +145,10 @@
                     'fallback_cb'    => false,
                 ));
                 ?>
+                <ul class="mobile-secondary-menu">
+                    <li><a href="<?php echo esc_url(wc_get_page_permalink('shop')); ?>">Shop All</a></li>
+                    <li><a href="<?php echo esc_url(wp_login_url()); ?>">Login</a></li>
+                </ul>
             </div>
         </div>
     </header>

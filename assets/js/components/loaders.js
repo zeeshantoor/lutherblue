@@ -6,21 +6,30 @@
     
     // Create loader element
     function createLoader(type = 'luxury-loader') {
-        return $('<div class="loader-container"><div class="' + type + '"></div></div>');
+        // Create the loader container
+        var $container = $('<div class="loader-container"></div>');
+        
+        // Create the loader element
+        var $loader = $('<div class="' + type + '"></div>');
+        
+        // Append loader to container
+        $container.append($loader);
+        
+        return $container;
     }
     
     // Show loader
     function showLoader(element, type = 'luxury-loader') {
         var $element = $(element);
-        var $loader = $element.find('.loader-container');
         
-        // Create loader if it doesn't exist
-        if ($loader.length === 0) {
-            $loader = createLoader(type);
-            $element.append($loader);
-        }
+        // First, remove any existing loaders to prevent duplicates
+        $element.find('.loader-container').remove();
         
-        // Show loader
+        // Create a new loader
+        var $loader = createLoader(type);
+        $element.append($loader);
+        
+        // Show loader with a slight delay to ensure proper rendering
         setTimeout(function() {
             $loader.addClass('active');
         }, 10);
@@ -30,7 +39,8 @@
     
     // Hide loader
     function hideLoader(element) {
-        var $loader = $(element).find('.loader-container');
+        var $element = $(element);
+        var $loader = $element.find('.loader-container');
         
         if ($loader.length) {
             $loader.removeClass('active');

@@ -69,6 +69,10 @@ function luther_blue_cart_panel() {
     ?>
     <div id="cart-panel" class="cart-panel">
         <div class="cart-panel-inner">
+            <div class="cart-close">
+                <span class="close-text">TAP TO CLOSE THE CART</span>
+                <span class="close-icon">&times;</span>
+            </div>
             <div class="cart-header">
                 <h2>Your Cart (<?php echo WC()->cart->get_cart_contents_count(); ?>)</h2>
                 <button class="close-cart" aria-label="Close cart"></button>
@@ -137,6 +141,19 @@ function luther_blue_get_shipping_notice() {
 }
 add_action('wp_ajax_luther_blue_get_shipping_notice', 'luther_blue_get_shipping_notice');
 add_action('wp_ajax_nopriv_luther_blue_get_shipping_notice', 'luther_blue_get_shipping_notice');
+
+/**
+ * Get cart count via AJAX
+ */
+function luther_blue_get_cart_count() {
+    check_ajax_referer('luther-blue-ajax-nonce', 'nonce');
+    
+    wp_send_json_success(array(
+        'count' => WC()->cart->get_cart_contents_count()
+    ));
+}
+add_action('wp_ajax_luther_blue_get_cart_count', 'luther_blue_get_cart_count');
+add_action('wp_ajax_nopriv_luther_blue_get_cart_count', 'luther_blue_get_cart_count');
 
 /**
  * AJAX add to cart functionality

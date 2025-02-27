@@ -70,6 +70,20 @@
     .four-columns {
         grid-template-columns: 1fr;
     }
+
+    body.cart-open .site-overlay,
+    body.menu-open .site-overlay {
+    visibility: hidden;
+    }
+    
+    /* hide cart cross */
+    .close-cart-cross {
+        display: none;
+    }
+
+    .menu-toggle {
+        padding: 0 15px;
+    }
 }
 
 /* Mobile responsive styles for shop page */
@@ -123,4 +137,104 @@
         padding: 6px 25px 6px 10px;
         font-size: 12px;
     }
+
+    .menu-toggle {
+        padding: 0 15px;
+    }
+
+    .custom-logo {
+        max-height: 50px;
+        width: 180px;
+    }
 } 
+
+/* Extra Small Devices (Mobile Phones) */
+@media (max-width: 399px) {
+    /* Header */
+    .site-header {
+        padding: 15px 3%;
+    }
+    
+    .custom-logo {
+        max-height: 50px;
+        width: 180px;
+    }
+    
+    .mobile-header {
+        padding: 10px 0;
+    }
+    
+    .menu-toggle span {
+        width: 20px;
+        height: 1.5px;
+        margin-bottom: 4px;
+    }
+    .menu-toggle {
+        padding: 0 15px;
+    }
+
+    .mobile-cart-toggle {
+        font-size: 12px;
+    }
+    
+    /* Mobile Menu */
+    .mobile-menu-close .close-text {
+        font-size: 12px;
+    }
+    
+    #mobile-menu a {
+        font-size: 18px;
+    }
+    
+    /* Content Spacing */
+    .site-content {
+        padding: 0;
+    }
+    
+    .product-image-wrapper {
+        min-height: 180px;
+        padding: 10px;
+    }
+    
+    .product-info {
+        padding: 0 10px 10px;
+    }
+    
+    .woocommerce-loop-product__title {
+        font-size: 14px;
+    }
+    
+    .product-description {
+        font-size: 11px;
+        margin-bottom: 10px;
+    }
+    
+    .price {
+        font-size: 11px;
+    }
+    
+    .add_to_cart_button {
+        padding: 10px;
+        font-size: 11px;
+    }
+    
+    /* Shop Header */
+    .woocommerce-products-header__title {
+        font-size: 24px;
+    }
+}
+
+/* Products Loop Styling Mobile */
+@media (max-width: 767px) {
+    .luther-blue-product-title {
+        font-size: 16px;
+    }
+    .luther-blue-product-item {
+        padding: 30px;
+    }
+
+    .menu-toggle {
+        padding: 0 15px;
+    }
+
+}

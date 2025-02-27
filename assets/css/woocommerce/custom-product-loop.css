@@ -1,0 +1,77 @@
+/**
+ * Luther Blue Theme - Custom Product Loop Styles
+ */
+
+/* Hide default WooCommerce elements */
+.woocommerce-products-header,
+.woocommerce-result-count,
+.woocommerce-ordering,
+.woocommerce-notices-wrapper {
+    display: none !important;
+}
+
+/* Reset any default WooCommerce styles that might interfere */
+.woocommerce ul.products li.product,
+.woocommerce-page ul.products li.product {
+    display: none !important;
+}
+
+/* Ensure our custom product loop is displayed properly */
+.luther-blue-products-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 80px; /* Increased gap between rows */
+    padding: 5%;
+    margin-bottom: 40px; /* Added margin bottom */
+}
+
+.luther-blue-products-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    align-items: stretch;
+    min-height: 500px;
+    position: relative; /* Added position relative */
+    margin-bottom: 20px; /* Added margin to prevent overlap */
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 991px) {
+    .luther-blue-products-grid {
+        gap: 60px;
+    }
+    
+    .luther-blue-products-row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        min-height: 450px;
+        margin-bottom: 15px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .luther-blue-products-grid {
+        gap: 50px;
+    }
+    
+    .luther-blue-products-row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        min-height: 400px;
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .luther-blue-products-grid {
+        gap: 40px;
+        padding: 3%;
+    }
+    
+    .luther-blue-products-row {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        min-height: 380px;
+        margin-bottom: 10px;
+    }
+} 

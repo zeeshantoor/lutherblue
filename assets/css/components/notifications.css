@@ -1,17 +1,15 @@
 /* Notification Banner */
 #top-notification {
-    background-color: var(--color-primary);
-    color: var(--color-white);
-    text-align: center;
-    padding: 6px 0;
     position: relative;
+    z-index: 999; /* Below the sticky header */
+    width: 100%;
+    padding: 4px 0;
+    text-align: center;
 }
 
 .notification-content {
-    font-family: 'WorkSans', sans-serif;
+    margin-left: 30px;
     font-size: 13px;
-    font-weight: 300;
-    padding-left: 40px;
 }
 
 #close-notification {
@@ -34,4 +32,14 @@
 #close-notification:hover {
     opacity: 1;
     font-weight: bold;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 767px) {
+    .luther-blue-notifications {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        max-width: none;
+    }
 } 

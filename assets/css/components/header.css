@@ -3,7 +3,10 @@
     background-color: var(--color-light);
     padding: 20px 5%;
     border-bottom: var(--border-solid);
-
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
 }
 
 /* Desktop Header */
@@ -143,6 +146,8 @@
     display: none;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
+    background-color: var(--color-light);
 }
 
 .menu-toggle {
@@ -182,19 +187,60 @@
     left: 0;
     width: 100%;
     height: 100vh;
-    background-color: var(--color-white);
+    background-color: var(--color-light);
     transform: translateX(-100%);
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 9998;
+    z-index: 1001; /* Higher than site-header */
     overflow-y: auto;
+    box-shadow: none;
 }
 
 .mobile-menu-panel.active {
     transform: translateX(0);
 }
 
+/* Mobile Menu Close Button */
+.mobile-menu-close {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    background-color: var(--color-accent-light);
+    border-bottom: var(--border-solid);
+    border-top: var(--border-solid);
+    cursor: pointer;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.mobile-menu-close:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+.mobile-menu-close .close-text {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-right: 24px; /* Space for the cross icon */
+}
+
+.mobile-menu-close .close-icon {
+    font-size: 24px;
+    color: var(--color-dark);
+    line-height: 1;
+    position: absolute;
+    right: 20px;
+    top: 40%;
+    transform: translateY(-50%);
+}
+
 .mobile-menu-inner {
-    padding: 60px 30px;
+    padding: 30px 20px;
 }
 
 #mobile-menu {
@@ -208,7 +254,31 @@
 }
 
 #mobile-menu a {
-    font-size: 12px;
+    font-size: 22px;
     color: var(--color-primary);
     text-decoration: none;
+}
+
+/* Mobile Secondary Menu */
+.mobile-secondary-menu {
+    list-style: none;
+    margin: 40px 0 0 0;
+    padding: 30px 0 0 0;
+    border-top: var(--border-solid);
+}
+
+.mobile-secondary-menu li {
+    margin-bottom: 15px;
+}
+
+.mobile-secondary-menu a {
+    font-size: 22px;
+    color: var(--color-primary);
+    text-decoration: none;
+    display: block;
+    transition: color 0.3s ease;
+}
+
+.mobile-secondary-menu a:hover {
+    color: var(--color-accent);
 }

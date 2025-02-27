@@ -8,33 +8,6 @@
 
     <footer id="colophon" class="site-footer">
         <div class="container">
-            <div class="footer-widgets">
-                <div class="footer-widget-area">
-                    <?php if (is_active_sidebar('footer-1')) : ?>
-                        <div class="footer-widget footer-widget-1">
-                            <?php dynamic_sidebar('footer-1'); ?>
-                        </div>
-                    <?php endif; ?>
-                    
-                    <?php if (is_active_sidebar('footer-2')) : ?>
-                        <div class="footer-widget footer-widget-2">
-                            <?php dynamic_sidebar('footer-2'); ?>
-                        </div>
-                    <?php endif; ?>
-                    
-                    <?php if (is_active_sidebar('footer-3')) : ?>
-                        <div class="footer-widget footer-widget-3">
-                            <?php dynamic_sidebar('footer-3'); ?>
-                        </div>
-                    <?php endif; ?>
-                    
-                    <?php if (is_active_sidebar('footer-4')) : ?>
-                        <div class="footer-widget footer-widget-4">
-                            <?php dynamic_sidebar('footer-4'); ?>
-                        </div>
-                    <?php endif; ?>
-                </div>
-            </div>
             
             <div class="footer-bottom">
                 <div class="copyright">

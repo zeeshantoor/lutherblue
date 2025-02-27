@@ -9,6 +9,13 @@
             $('body').toggleClass('menu-open');
         });
 
+        // Mobile menu close button
+        $('.mobile-menu-close').on('click', function() {
+            $('#mobile-menu-panel').removeClass('active');
+            $('body').removeClass('menu-open');
+            $('.menu-toggle').removeClass('active');
+        });
+
         // Desktop cart toggle
         $('.cart-toggle').on('click', function(e) {
             e.preventDefault();
@@ -25,8 +32,8 @@
             $('body').addClass('cart-open');
         });
 
-        // Close cart
-        $('.close-cart').on('click', function() {
+        // Close cart buttons
+        $('.close-cart, .cart-close').on('click', function() {
             $('#cart-panel').removeClass('active');
             $('body').removeClass('cart-open');
         });

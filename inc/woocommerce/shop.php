@@ -18,20 +18,6 @@ function luther_blue_shop_hero() {
     // Get shop page title
     $shop_title = woocommerce_page_title(false);
     
-    // Get shop description
-    $shop_description = '';
-    if (is_shop()) {
-        $shop_page_id = wc_get_page_id('shop');
-        if ($shop_page_id) {
-            $shop_description = get_post_meta($shop_page_id, '_shop_description', true);
-            if (empty($shop_description)) {
-                $shop_description = get_the_content(null, false, $shop_page_id);
-            }
-        }
-    } elseif (is_product_category()) {
-        $category = get_queried_object();
-        $shop_description = $category->description;
-    }
     ?>
     <div class="shop-hero">
         <div class="container">
@@ -110,12 +96,18 @@ function luther_blue_shop_layout() {
     remove_action('woocommerce_before_shop_loop', 'woocommerce_result_count', 20);
     remove_action('woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30);
     
+    // Remove archive description and title
+    remove_action('woocommerce_archive_description', 'woocommerce_taxonomy_archive_description', 10);
+    remove_action('woocommerce_archive_description', 'woocommerce_product_archive_description', 10);
+    add_filter('woocommerce_show_page_title', '__return_false');
+    
     // Add custom hooks
     add_action('woocommerce_before_main_content', 'luther_blue_shop_wrapper_start', 10);
     add_action('woocommerce_after_main_content', 'luther_blue_shop_wrapper_end', 10);
     add_action('woocommerce_before_main_content', 'luther_blue_shop_hero', 20);
-    add_action('woocommerce_before_shop_loop', 'luther_blue_shop_controls', 20);
-    add_action('woocommerce_before_shop_loop', 'woocommerce_output_all_notices', 30);
+    
+    // Remove shop controls/filters
+    remove_action('woocommerce_before_shop_loop', 'luther_blue_shop_controls', 20);
     
     // Set products per row
     add_filter('loop_shop_columns', function() { return 3; });
@@ -131,6 +123,7 @@ add_action('init', 'luther_blue_shop_layout');
 function luther_blue_shop_wrapper_start() {
     ?>
     <div class="shop-wrapper">
+        <div class="shop-container">
     <?php
 }
 
@@ -139,6 +132,7 @@ function luther_blue_shop_wrapper_start() {
  */
 function luther_blue_shop_wrapper_end() {
     ?>
+        </div>
     </div>
     <?php
 }
@@ -155,41 +149,13 @@ function luther_blue_shop_body_class($classes) {
 add_filter('body_class', 'luther_blue_shop_body_class');
 
 /**
- * Add JavaScript for shop filter toggle
- */
-function luther_blue_shop_scripts() {
-    if (is_shop() || is_product_category() || is_product_tag()) {
-        wp_add_inline_script('luther-blue-main', '
-            jQuery(document).ready(function($) {
-                // Toggle filter panel
-                $("#shop-filter-toggle").on("click", function() {
-                    $("#shop-filter-panel").toggleClass("active");
-                    $("body").toggleClass("filter-open");
-                });
-                
-                // Close filter panel
-                $(".close-filter").on("click", function() {
-                    $("#shop-filter-panel").removeClass("active");
-                    $("body").removeClass("filter-open");
-                });
-                
-                // Close filter panel when clicking on overlay
-                $(".site-overlay").on("click", function() {
-                    $("#shop-filter-panel").removeClass("active");
-                    $("body").removeClass("filter-open");
-                });
-            });
-        ');
-    }
-}
-add_action('wp_enqueue_scripts', 'luther_blue_shop_scripts');
-
-/**
  * Add CSS for shop page
  */
 function luther_blue_shop_styles() {
     if (is_shop() || is_product_category() || is_product_tag()) {
         wp_enqueue_style('luther-blue-shop', get_template_directory_uri() . '/assets/css/woocommerce/shop.css', array('luther-blue-main'), LUTHER_BLUE_VERSION);
+        wp_enqueue_style('luther-blue-product-loop', get_template_directory_uri() . '/assets/css/woocommerce/product-loop.css', array('luther-blue-main'), LUTHER_BLUE_VERSION);
+        wp_enqueue_style('luther-blue-custom-product-loop', get_template_directory_uri() . '/assets/css/woocommerce/custom-product-loop.css', array('luther-blue-main'), LUTHER_BLUE_VERSION);
     }
 }
 add_action('wp_enqueue_scripts', 'luther_blue_shop_styles');
@@ -234,64 +200,6 @@ function luther_blue_shop_acf_fields() {
     }
 }
 add_action('acf/init', 'luther_blue_shop_acf_fields');
-
-/**
- * Custom shop meta field for shop description
- */
-function luther_blue_shop_meta_fields() {
-    add_meta_box(
-        'luther_blue_shop_description',
-        __('Shop Description', 'luther-blue'),
-        'luther_blue_shop_description_callback',
-        'page',
-        'normal',
-        'high'
-    );
-}
-add_action('add_meta_boxes', 'luther_blue_shop_meta_fields');
-
-/**
- * Shop description meta box callback
- */
-function luther_blue_shop_description_callback($post) {
-    // Only show on shop page
-    if ($post->ID !== wc_get_page_id('shop')) {
-        return;
-    }
-    
-    wp_nonce_field('luther_blue_shop_description_nonce', 'luther_blue_shop_description_nonce');
-    $value = get_post_meta($post->ID, '_shop_description', true);
-    ?>
-    <p><?php _e('Enter a description for the shop page hero section.', 'luther-blue'); ?></p>
-    <textarea style="width:100%; height:150px;" name="shop_description"><?php echo esc_textarea($value); ?></textarea>
-    <?php
-}
-
-/**
- * Save shop description meta
- */
-function luther_blue_save_shop_description($post_id) {
-    if (!isset($_POST['luther_blue_shop_description_nonce'])) {
-        return;
-    }
-    
-    if (!wp_verify_nonce($_POST['luther_blue_shop_description_nonce'], 'luther_blue_shop_description_nonce')) {
-        return;
-    }
-    
-    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
-        return;
-    }
-    
-    if (!current_user_can('edit_post', $post_id)) {
-        return;
-    }
-    
-    if (isset($_POST['shop_description'])) {
-        update_post_meta($post_id, '_shop_description', wp_kses_post($_POST['shop_description']));
-    }
-}
-add_action('save_post', 'luther_blue_save_shop_description');
 
 /**
  * Dynamic products per page based on ACF option

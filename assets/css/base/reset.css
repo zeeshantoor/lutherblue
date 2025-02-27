@@ -90,6 +90,11 @@ html {
     }
 }
 
+/* Hide Close Cart Div globally */
+.cart-close { 
+    display: none;
+}
+
 /* Optional: Add custom scrollbar to specific elements */
 .woocommerce-mini-cart,
 .product-description,

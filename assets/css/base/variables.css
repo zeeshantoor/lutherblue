@@ -4,11 +4,13 @@
     --color-primary: #333333;
     --color-secondary: #555555;
     --color-accent: #c9a16e;
+    --color-accent-rgb: 201, 161, 110; /* RGB version of accent color for animations */
     --color-light: #f7f4ec;
     --color-accent-light: #E9E6DA;
+    --color-accent-light-rgb: 233, 230, 218; /* RGB version of accent light color */
     --color-dark: #222222;
     --color-text: #333333;
-    --color-text-light: #777777;
+    --color-text-light: #4e4e4e;
     --color-text-dark: #42423f;
     --color-white: #ffffff;
     --color-background: #f7f4ec;

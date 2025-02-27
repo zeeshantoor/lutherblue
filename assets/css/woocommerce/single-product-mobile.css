@@ -1,0 +1,373 @@
+/**
+ * Luther Blue Theme - Single Product Mobile Layout
+ * This file contains mobile-specific styles for the single product page
+ */
+
+/* Mobile and tablet-specific layout (applied at 1024px and below, except iPad Pro) */
+@media screen and (max-width: 1024px) {
+    /* Target iPad Mini, iPad Air, Surface Pro but exclude iPad Pro */
+    @supports not ((-webkit-touch-callout: none) and (min-device-width: 1024px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 2)) {
+        /* Change the product layout to a column for mobile */
+        .luther-blue-product-layout {
+            flex-direction: column;
+            border: none;
+        }
+        
+        /* Hide the desktop layout pseudo-elements */
+        .luther-blue-product-layout::before,
+        .luther-blue-product-layout::after {
+            display: none;
+        }
+        
+        /* Mobile order container - wraps all elements for reordering */
+        .luther-blue-mobile-order-wrapper {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+        
+        /* 1. Main image - order 1 */
+        .luther-blue-product-main-image {
+            order: 1;
+            flex: 0 0 100%;
+            min-height: 300px;
+            margin-bottom: 5px;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            overflow: hidden;
+        }
+        
+        .luther-blue-product-main-image img.main-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        /* 2. Categories - order 2 */
+        .product-categories {
+            order: 2;
+            margin: 10px 0 5px 0;
+            padding: 0 15px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        span.category-name {
+            text-align: center;
+        }
+        
+        /* 3. Product title - order 3 */
+        .product-title {
+            order: 3;
+            font-size: 28px!important;
+            padding: 5px 15px;
+            margin: 0;
+            text-align: center;
+        }
+        
+        /* 4. Product description - order 4 */
+        .product-description {
+            order: 4;
+            padding: 0 15px 20px;
+            text-align: center;
+            font-size: 16px;
+            line-height: 1.6;
+            margin: 0!important;
+        }
+        
+        .product-description p {
+            margin-bottom: 0;
+        }
+        
+        /* 5. Gallery thumbnails - order 5 */
+        .luther-blue-product-gallery-thumbs {
+            order: 5;
+            flex-direction: row;
+            max-height: none;
+            overflow-x: auto;
+            padding: 10px 0;
+            margin: 0 0 20px 0;
+            border: none;
+            width: 100%;
+            -webkit-overflow-scrolling: touch;
+            display: flex;
+            justify-content: flex-start;
+        }
+        
+        .gallery-thumbs-container {
+            display: flex;
+            flex-direction: row;
+            max-height: none;
+            width: 100%;
+            padding: 0;
+        }
+        
+        .gallery-thumb {
+            flex: 0 0 140px;
+            width: 140px!important;
+            height: 140px!important;
+            margin-right: 0;
+            border: 1px solid var(--color-primary);
+            border-right: none;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .gallery-thumb:last-child {
+            border-right: 1px solid var(--color-primary);
+        }
+        
+        .gallery-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-thumb.active {
+            border-color: var(--color-accent);
+        }
+        
+        /* Hide separator on mobile */
+        .product-separator {
+            display: none;
+        }
+        
+        /* 6. Features, Aroma, Ingredients - order 6 */
+        .product-features,
+        .product-aroma,
+        .product-ingredients {
+            order: 6;
+            margin-bottom: 0px;
+            padding-bottom: 30px;
+            padding-left: 30px!important;
+        }
+        
+        /* 7. Variations (Select size) - order 7 */
+        .variations,
+        .variations-wrapper {
+            order: 7;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            padding: 0 15px;
+        }
+        
+        /* Ensure variations wrapper is properly ordered */
+        .variations-wrapper {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+        
+        /* 8. Add to cart button - order 8 */
+        .product-add-to-cart,
+        .single_variation_wrap {
+            order: 8;
+            margin-top: 0;
+            padding: 0 15px 20px;
+        }
+        
+        /* For variable products, ensure correct order within the form */
+        .variations_form.cart {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .variations_form.cart .variations {
+            order: 1;
+        }
+        
+        .variations_form.cart .single_variation_wrap {
+            order: 2;
+        }
+        
+        /* Adjust the details container to allow for reordering */
+        .luther-blue-product-details {
+            display: contents; /* This allows children to be ordered independently */
+            padding: 0;
+            border: none;
+            margin-top: 0;
+        }
+        
+        /* Remove border from details wrapper */
+        .luther-blue-product-details-wrapper {
+            border: none;
+            margin-bottom: 20px;
+        }
+        
+        /* Adjust spacing for section titles */
+        .product-section-title {
+            font-size: 22px;
+            margin-top: 15px;
+            margin-bottom: 12px;
+        }
+        
+        /* Center section content */
+        .product-section-content {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Left Column: Gallery Thumbnails */
+        .luther-blue-product-gallery-thumbs {
+            flex: 0 0 100%;
+        }
+
+        
+        /* Make add to cart button full width */
+        .single_add_to_cart_button {
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        /* Adjust quantity input for mobile */
+        .quantity {
+            width: 100%;
+            margin-right: 0;
+        }
+        
+        /* Adjust variation radios for mobile */
+        .variation-radios {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+        
+        .variation-radios label {
+            flex: 1 0 auto;
+            min-width: 70px;
+            text-align: center;
+        }
+    
+        .luther-blue-product-details .variations .variation-radios label {
+            margin-top: 10px;
+        }
+    
+        .luther-blue-product-details .variations tr {
+            padding-left: 20px;
+        }
+
+        /* Custom radio buttons for variations */
+        .luther-blue-product-details .variations .variation-radios {
+            margin-bottom: 0px;
+        }
+        
+        /* Fix gallery navigation for horizontal scrolling */
+        .gallery-nav {
+            width: 30px;
+            height: 100%;
+            top: 0;
+            background-color: transparent;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+        }
+        
+        .gallery-nav svg {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            padding: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            width: 24px;
+            height: 24px;
+            fill: var(--color-primary);
+        }
+        
+        .gallery-nav-up {
+            left: 0;
+            transform: rotate(90deg);
+        }
+        
+        .gallery-nav-down {
+            right: 0;
+            left: auto;
+            transform: rotate(90deg);
+        }
+        
+        /* Add spacing between sections */
+        .product-features + .product-aroma,
+        .product-aroma + .product-ingredients,
+        .product-ingredients + .product-add-to-cart {
+            margin-top: 20px;
+        }
+        
+        /* Ensure proper spacing for the mobile layout */
+        .luther-blue-single-product {
+            padding: 0;
+        }
+        
+        /* Center product section header */
+        .product-section-header {
+            display: flex;
+        }
+        
+        /* Adjust ingredients toggle button */
+        .ingredients-toggle {
+            margin-left: 10px;
+        }
+    }
+}
+
+/* iPad Pro specific styles - keep desktop layout */
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 2) {
+    /* iPad Pro keeps desktop layout, but with some adjustments */
+    .luther-blue-product-layout {
+        flex-direction: row;
+    }
+}
+
+/* Extra small devices */
+@media screen and (max-width: 576px) {
+    .luther-blue-product-main-image {
+        min-height: 250px;
+    }
+    
+    .product-title {
+        font-size: 31px !important;
+    }
+    
+    .gallery-thumb {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .product-section-title {
+        font-size: 20px;
+    }
+    
+    /* Further reduce padding on very small screens */
+    .luther-blue-single-product {
+        padding: 0;
+    }
+    
+    /* Adjust spacing for smaller screens */
+    .product-categories,
+    .product-title,
+    .product-description,
+    .product-features,
+    .product-aroma,
+    .product-ingredients,
+    .variations,
+    .product-add-to-cart {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    
+    /* Adjust font size for smaller screens */
+    .product-description,
+    .product-section-content {
+        font-size: 15px;
+    }
+    h1.product-title {
+        padding: 20px 0;
+    }
+} 

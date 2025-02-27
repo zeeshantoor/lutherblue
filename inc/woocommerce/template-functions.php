@@ -160,24 +160,6 @@ function luther_blue_woocommerce_template_loop_add_to_cart() {
 }
 
 /**
- * Add sorting icon to shop page
- */
-function luther_blue_shop_filters() {
-    if (!is_shop() && !is_product_category() && !is_product_tag()) {
-        return;
-    }
-    
-    echo '<div class="shop-filters">';
-    echo '<button class="filter-button" id="shop-filter-toggle">';
-    echo '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">';
-    echo '<path d="M3 6H21M6 12H18M10 18H14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>';
-    echo '</svg>';
-    echo 'Sort';
-    echo '</button>';
-    echo '</div>';
-}
-
-/**
  * Setup WooCommerce hooks
  */
 function luther_blue_woocommerce_hooks() {
@@ -196,7 +178,6 @@ function luther_blue_woocommerce_hooks() {
     add_action('woocommerce_shop_loop_item_title', 'luther_blue_woocommerce_template_loop_product_title', 10);
     add_action('woocommerce_after_shop_loop_item', 'luther_blue_woocommerce_template_loop_add_to_cart', 10);
     add_action('woocommerce_after_shop_loop_item', 'luther_blue_woocommerce_template_loop_product_link_close', 15);
-    add_action('woocommerce_before_shop_loop', 'luther_blue_shop_filters', 10);
     
     // Set products per row
     add_filter('loop_shop_columns', function() { return 3; });

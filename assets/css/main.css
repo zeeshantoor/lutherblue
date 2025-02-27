@@ -17,6 +17,15 @@
 @import 'components/footer.css';
 @import 'components/cart-panel.css';
 @import 'components/loaders.css';
+@import 'components/login.css';
+@import 'components/notifications.css';
+
+/* WooCommerce Styles */
+@import 'woocommerce/products.css';
+@import 'woocommerce/shop.css';
+@import 'woocommerce/checkout.css';
+@import 'woocommerce/account.css';
+@import 'woocommerce/product-loop.css';
 
 /* Responsive Styles */
 @import 'responsive/desktop.css';

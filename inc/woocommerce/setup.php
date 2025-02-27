@@ -160,3 +160,68 @@ add_filter('woocommerce_get_endpoint_url', 'luther_blue_modify_cart_links', 10, 
 //     return $headers;
 // }
 // add_filter('nocache_headers', 'luther_blue_cart_fragments_no_cache'); 
+
+/**
+ * Remove default WooCommerce hooks on single product page
+ * to prevent duplication with our custom template
+ */
+function luther_blue_remove_single_product_hooks() {
+    // Remove title
+    remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_title', 5);
+    
+    // Remove price
+    remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_price', 10);
+    
+    // Remove excerpt/short description
+    remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20);
+    
+    // Remove rating
+    remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10);
+    
+    // Keep add to cart form
+    // remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30);
+    
+    // Remove meta information (categories, tags, SKU)
+    remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
+    
+    // Remove sharing
+    remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 50);
+    
+    // Remove product image/gallery as we have our own
+    remove_action('woocommerce_before_single_product_summary', 'woocommerce_show_product_images', 20);
+    
+    // Remove related products
+    remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20);
+    
+    // Remove upsells
+    remove_action('woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15);
+    
+    // Remove tabs
+    remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10);
+}
+add_action('init', 'luther_blue_remove_single_product_hooks');
+
+/**
+ * Enqueue scripts and styles for WooCommerce
+ */
+function luther_blue_woocommerce_scripts() {
+    if (is_product()) {
+        // Enqueue WooCommerce's accounting.js library
+        wp_enqueue_script(
+            'wc-accounting',
+            WC()->plugin_url() . '/assets/js/accounting/accounting.min.js',
+            array('jquery'),
+            LUTHER_BLUE_VERSION,
+            true
+        );
+        
+        wp_enqueue_script(
+            'luther-blue-variation-radios',
+            get_template_directory_uri() . '/assets/js/woocommerce/variation-radios.js',
+            array('jquery', 'wc-accounting'),
+            LUTHER_BLUE_VERSION,
+            true
+        );
+    }
+}
+add_action('wp_enqueue_scripts', 'luther_blue_woocommerce_scripts'); 
