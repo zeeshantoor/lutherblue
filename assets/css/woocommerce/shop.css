@@ -1,0 +1,97 @@
+/* Shop Hero */
+.shop-hero {
+    position: relative;
+    padding: 60px 0;
+    text-align: center;
+    border-bottom: var(--border-solid);
+}
+
+.shop-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 1;
+}
+
+.shop-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.shop-hero-title {
+    font-family: var(--font-headings);
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: var(--color-primary);
+}
+
+.shop-hero-description {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+/* Shop Container */
+.shop-container {
+    width: 100%;
+    /* max-width: 1400px; */
+    margin: 0 auto;
+    /* padding: 0 40px 80px; */
+}
+
+/* Shop Wrapper */
+.shop-wrapper {
+    width: 100%;
+}
+
+/* Remove default WooCommerce classes */
+.woocommerce-products-header {
+    display: none;
+}
+
+
+/* Responsive */
+@media screen and (max-width: 991px) {
+    .shop-hero {
+        padding: 50px 0;
+        margin-bottom: 50px;
+    }
+    
+    .shop-hero-title {
+        font-size: 28px;
+    }
+    
+    .shop-container {
+        padding: 0 30px 60px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .shop-hero {
+        padding: 40px 0;
+        margin-bottom: 40px;
+    }
+    
+    .shop-hero-title {
+        font-size: 24px;
+    }
+    
+    .shop-hero-description {
+        font-size: 16px;
+    }
+    
+    .shop-container {
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .shop-container {
+        padding: 0;
+    }
+}

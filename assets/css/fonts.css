@@ -1,0 +1,62 @@
+/* Fonts */
+
+/* KudryashevDisplay for headings */
+@font-face {
+    font-family: 'KudryashevDisplay';
+    src: url('../fonts/KudryashevDisplay/KudryashevDisplay.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Söhne for body text */
+@font-face {
+    font-family: 'Sohne';
+    src: url('../fonts/Sohne/Sohne.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sohne';
+    src: url('../fonts/Sohne/Sohne-Buch.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sohne';
+    src: url('../fonts/Sohne/Sohne-leich.otf') format('opentype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Work Sans for notification text */
+@font-face {
+    font-family: 'WorkSans';
+    src: url('../fonts/Work_Sans/WorkSans-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'WorkSans';
+    src: url('../fonts/Work_Sans/WorkSans-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+/* Helvetica from Google Fonts */
+@font-face {
+    font-family: 'Helvetica';
+    src: url('https://fonts.googleapis.com/css2?family=Helvetica&display=swap');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+

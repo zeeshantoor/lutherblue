@@ -1,0 +1,39 @@
+/* Buttons */
+.button,
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+    display: inline-block;
+    background-color: var(--color-primary);
+    color: var(--color-light);
+    font-family: var(--font-primary);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1;
+    padding: 15px 30px;
+    border: 1px solid var(--color-primary);
+    border-radius: 0;
+    cursor: pointer;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.button:hover,
+button:hover,
+input[type="button"]:hover,
+input[type="reset"]:hover,
+input[type="submit"]:hover {
+    background-color: transparent;
+}
+
+.button.button-secondary {
+    background-color: transparent;
+    color: var(--color-primary);
+}
+
+.button.button-secondary:hover {
+    background-color: var(--color-primary);
+    color: var(--color-light);
+} 

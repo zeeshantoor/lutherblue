@@ -1,0 +1,68 @@
+/* Layout - Full Width Approach */
+.container {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 var(--spacing-md);
+}
+
+.site-content {
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Content Containers */
+.content-area {
+    width: 100%;
+    max-width: 100%;
+}
+
+.entry-content > * {
+    max-width: var(--container-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+}
+
+/* Full Width Blocks */
+.entry-content > .alignfull,
+.wp-block-cover,
+.wp-block-group.has-background {
+    max-width: none;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Wide Width Blocks */
+.entry-content > .alignwide {
+    max-width: 1400px;
+}
+
+/* Columns and Grids */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: var(--grid-gap);
+}
+
+.two-columns {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: var(--grid-gap);
+}
+
+.three-columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: var(--grid-gap);
+}
+
+.four-columns {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: var(--grid-gap);
+} 

@@ -1,0 +1,1056 @@
+/**
+ * Luther Blue Theme - Single Product Styles
+ */
+
+/* Override any container constraints from parent elements */
+body.single-product .site-content,
+body.single-product .site-content .container,
+body.single-product .content-area,
+body.single-product .entry-content {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.shop-wrapper {
+    width: 100%;
+    margin-top: 0;
+    padding: 0;
+    max-width: 100%;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+.luther-blue-single-product {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.luther-blue-product-container {
+    width: 100%;
+    max-width: 100%;
+}
+
+/* 3-Column Layout */
+.luther-blue-product-layout {
+    display: flex;
+    position: relative;
+    align-items: flex-start;
+    border-top: none;
+    border-right: none;
+    border-left: var(--border-solid);
+    border-bottom: var(--border-solid);
+}
+
+/* Pseudo-elements for vertical grid lines */
+.luther-blue-product-layout::before,
+.luther-blue-product-layout::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background-color: var(--color-black);
+    z-index: 1;
+}
+
+/* First vertical line after thumbnails column */
+.luther-blue-product-layout::before {
+    left: 80px;
+}
+
+/* Second vertical line between main image and details */
+.luther-blue-product-layout::after {
+    left: calc(80px + 50%);
+}
+
+/* Left Column: Gallery Thumbnails */
+.luther-blue-product-gallery-thumbs {
+    flex: 0 0 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 600px;
+    overflow-y: hidden;
+    position: relative;
+    padding: 0;
+}
+
+.gallery-thumb {
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    border-bottom: var(--border-solid);
+    touch-action: manipulation; /* Improve touch behavior */
+    -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
+}
+
+.gallery-thumb:last-child {
+    border-bottom: none;
+}
+
+.gallery-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-thumb:hover {
+    border-color: var(--color-primary);
+}
+
+.gallery-thumb:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-thumb.active {
+    border-color: var(--color-primary);
+    background-color: rgba(var(--color-primary-rgb), 0.05);
+}
+
+/* Gallery Navigation Arrows */
+.gallery-nav {
+    width: 100%;
+    height: 30px;
+    display: none; /* Hidden by default, shown via JS when needed */
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    position: absolute;
+    left: 0;
+    z-index: 10;
+}
+
+.gallery-nav-up {
+    top: 0;
+}
+
+.gallery-nav-down {
+    bottom: 0;
+}
+
+.gallery-nav svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--color-primary);
+}
+
+.gallery-nav:hover svg {
+    fill: var(--color-accent);
+}
+
+/* Enhanced Gallery Thumbs for better touch experience */
+.gallery-thumbs-container {
+    overflow-y: auto;
+    max-height: 540px; /* Adjust to account for arrows */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    padding: 0; /* Space for arrows */
+    scroll-behavior: smooth; /* Smooth scrolling */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+.gallery-thumbs-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+/* Middle Column: Main Image */
+.luther-blue-product-main-image {
+    flex: 0 0 50%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 500px;
+    box-sizing: border-box;
+}
+
+.main-image {
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: none;
+    margin: 0 auto;
+    align-self: center;
+}
+
+/* Remove the zoom effect on hover */
+.luther-blue-product-main-image:hover .main-image {
+    transform: none;
+    cursor: default;
+}
+
+/* Remove the lightbox styles as we're removing that functionality */
+.image-lightbox {
+    display: none;
+}
+
+.lightbox-image {
+    display: none;
+}
+
+.lightbox-close {
+    display: none;
+}
+
+body.lightbox-open {
+    overflow: auto;
+}
+
+/* Right Column: Product Details */
+.luther-blue-product-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 50px;
+}
+
+.product-categories {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding-bottom: 5px;
+}
+
+.category-name {
+    font-family: 'Sohne', sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    color: var(--color-primary);
+    text-transform: capitalize;
+    letter-spacing: 1px;
+}
+
+.category-name:not(:last-child)::after {
+    content: "•";
+    margin-left: 10px;
+    color: var(--color-primary);
+}
+
+.product-title {
+    font-family: var(--font-headings);
+    font-size: 32px;
+    line-height: 1.2;
+    color: var(--color-primary);
+    margin: 0;
+    padding: 15px 0;
+}
+
+/* Product Description - replacing price and short description */
+.product-description {
+    font-family: var(--font-primary);
+    font-size: 14px;
+    text-transform: capitalize;
+    font-weight: lighter;
+    line-height: 1.6;
+    color: var(--color-text-light);
+    margin: 0 0 10px 0;
+}
+
+.product-description p {
+    margin-bottom: 15px;
+}
+
+.product-description ul, 
+.product-description ol {
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+
+/* Separator after product description */
+.product-separator {
+    height: 2px;
+    background-color: var(--color-secondary);
+    margin: 0 0 25px 0;
+    width: 100%;
+}
+
+/* ACF Fields Styling */
+.product-features,
+.product-aroma,
+.product-ingredients {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #0000001f;
+    padding-bottom: 15px;
+}
+
+.product-section-title {
+    font-family: var(--font-primary);
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--color-primary);
+    margin: 0 0 5px 0;
+    padding-bottom: 5px;
+}
+
+/* Product section header with toggle */
+.product-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+/* Toggle button for ingredients */
+.ingredients-toggle {
+    background: none;
+    border: 1px solid var(--color-primary);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+    color: var(--color-primary);
+    font-size: 14px;
+    font-weight: 300;
+    transition: all 0.3s ease;
+    font-family: 'Sohne', sans-serif;
+}
+
+.ingredients-toggle:hover {
+    background-color: var(--color-primary);
+    color: white;
+    opacity: 1;
+}
+
+.ingredients-toggle .toggle-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 1;
+    margin-top: -3px;
+    margin-right: -1px;
+}
+
+.ingredients-toggle[aria-expanded="true"] .toggle-icon {
+    transform: rotate(0deg);
+}
+
+/* Ingredients preview (shown when collapsed) */
+.ingredients-preview {
+    font-family: 'Sohne', sans-serif;
+    font-size: 14px;
+    text-transform: capitalize;
+    font-weight: lighter;
+    line-height: 1.6;
+    color: var(--color-text-light);
+    margin-bottom: 10px;
+}
+
+.product-section-content {
+    font-family: 'Sohne', sans-serif;
+    font-size: 14px;
+    text-transform: capitalize;
+    font-weight: lighter;
+    line-height: 1.6;
+    color: var(--color-text-light);
+}
+
+.product-ingredients-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+.ingredient-item {
+    font-family: 'Sohne', sans-serif;
+    font-size: 14px;
+    text-transform: capitalize;
+    font-weight: lighter;
+    line-height: 1.6;
+    color: var(--color-text-light);
+    position: relative;
+    padding-left: 15px;
+    margin-bottom: 5px;
+}
+
+.ingredient-item:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+}
+
+/* Add to Cart Form */
+.single_add_to_cart_button {
+    width: 100%;
+    padding: 15px 30px;
+    background-color: var(--color-primary);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-primary);
+    font-size: 16px;
+    text-transform: none;
+    letter-spacing: 0;
+    transition: background-color 0.3s ease;
+}
+
+.single_add_to_cart_button:hover {
+    background-color: var(--color-accent);
+}
+
+/* Quantity Input */
+.quantity {
+    margin-bottom: 20px;
+}
+
+.quantity input {
+    width: 80px;
+    padding: 10px;
+    border: 1px solid var(--color-border);
+    text-align: center;
+}
+
+/* Product Variations */
+.luther-blue-product-details .variations {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.luther-blue-product-details .variations tbody {
+    display: block;
+}
+
+.luther-blue-product-details .variations tr {
+    display: block;
+    margin-bottom: 20px;
+}
+
+.luther-blue-product-details .variations td {
+    display: block;
+    padding: 0;
+}
+
+.luther-blue-product-details .variations td.label {
+    margin-bottom: 15px;
+}
+
+.luther-blue-product-details .variations td.label label {
+    font-size: 28px;
+    font-weight: 400;
+    color: #333;
+    text-transform: none;
+    font-family: var(--font-primary);
+    margin-bottom: 5px;
+    display: block;
+}
+
+.luther-blue-product-details .variations td.value {
+    position: relative;
+    display: flex;
+    gap: 10px;
+}
+
+/* Hide the default select dropdown */
+.luther-blue-product-details .variations select {
+    display: none !important;
+}
+
+/* Custom radio buttons for variations */
+.luther-blue-product-details .variations .variation-radios {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: -30px;
+}
+
+.luther-blue-product-details .variations .variation-radios input[type="radio"] {
+    display: none;
+}
+
+.luther-blue-product-details .variations .variation-radios label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 60px;
+    padding: 4px 8px;
+    background: var(--color-white);
+    border: none;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.luther-blue-product-details .variations .variation-radios label:hover {
+    background: #f5f5f5;
+}
+
+.luther-blue-product-details .variations .variation-radios input[type="radio"]:checked + label {
+    background: #333;
+    color: white;
+    border: none;
+}
+
+/* Reset variations link */
+.luther-blue-product-details .reset_variations {
+    display: none !important;
+}
+
+/* Single variation wrap */
+.luther-blue-product-details .single_variation_wrap {
+    margin-top: 20px;
+}
+
+.luther-blue-product-details .single_variation {
+    display: none !important; /* Hide the variation display that appears before add to cart button */
+}
+
+/* Quantity and Add to Cart button wrapper */
+.luther-blue-product-details .variations_button {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Show the variation price */
+.luther-blue-product-details .woocommerce-variation-price {
+    display: block;
+}
+
+/* Hide quantity input */
+.luther-blue-product-details .quantity {
+    display: none !important;
+}
+
+/* Variation title styling */
+#content > div > div > div > div > div > div.luther-blue-product-details > div.product-add-to-cart > form > table > tbody > tr > th > label {
+    font-size: 14px;
+    font-weight: bold;
+}
+#content > div > div > div > div > div > div.luther-blue-product-details > div.product-add-to-cart > form > table > tbody > tr > td {
+    padding-top: 5px;
+}
+/* Responsive Styles */
+@media screen and (max-width: 991px) {
+    .luther-blue-product-layout {
+        flex-wrap: wrap;
+        /* Hide pseudo-elements on mobile */
+        border: none;
+    }
+    
+    .luther-blue-product-layout::before,
+    .luther-blue-product-layout::after {
+        display: none;
+    }
+
+    .luther-blue-product-gallery-thumbs {
+        flex: 0 0 100%;
+        flex-direction: row;
+        max-height: none;
+        padding: 0 30px;
+        position: relative;
+        border: var(--border-solid);
+        margin-bottom: 20px;
+        overflow-x: auto; /* Enable horizontal scrolling */
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    }
+
+    .gallery-thumbs-container {
+        display: flex;
+        flex-direction: row;
+        max-height: none;
+        overflow-x: auto;
+        padding: 0;
+        width: 100%;
+        scroll-snap-type: x mandatory; /* Snap to thumbnails */
+    }
+    
+    .gallery-thumb {
+        flex: 0 0 80px;
+        margin-right: 8px;
+        border-bottom: none;
+        border-right: var(--border-solid);
+        scroll-snap-align: center; /* Snap alignment */
+    }
+    
+    .gallery-thumb:last-child {
+        border-right: none;
+    }
+
+    .luther-blue-product-main-image {
+        flex: 0 0 100%;
+        margin-top: 0;
+        min-height: 400px;
+        border: var(--border-solid);
+    }
+    
+    /* Adjust zoom behavior for mobile */
+    .luther-blue-product-main-image:hover .main-image {
+        transform: scale(1.1); /* Further reduced zoom on mobile from 1.2 to 1.1 (10%) */
+    }
+
+    .luther-blue-product-details {
+        flex: 0 0 100%;
+        margin-top: 20px;
+        border: var(--border-solid);
+    }
+
+    .gallery-nav {
+        width: 30px;
+        height: 100%;
+        top: 0;
+        background-color: rgba(255, 255, 255, 0.9); /* More visible on mobile */
+        border-radius: 0;
+    }
+
+    .gallery-nav-up {
+        left: 0;
+        transform: rotate(90deg);
+    }
+
+    .gallery-nav-down {
+        right: 0;
+        left: auto;
+        transform: rotate(90deg);
+    }
+    
+    /* Improve lightbox on mobile */
+    .lightbox-close {
+        top: 10px;
+        right: 10px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .luther-blue-single-product {
+        padding: 0;
+    }
+
+    .product-title {
+        font-size: 24px;
+    }
+
+    .luther-blue-product-main-image {
+        min-height: 300px;
+    }
+    
+    .main-image {
+        max-height: 400px;
+    }
+    
+    /* Adjust lightbox for smaller screens */
+    .lightbox-image {
+        max-width: 95%;
+        max-height: 80%;
+    }
+
+    .luther-blue-product-details .variations td.label label {
+        font-size: 20px;
+    }
+
+    .luther-blue-product-details .variations .variation-radios label {
+        min-width: 80px;
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .gallery-thumb {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .luther-blue-product-main-image {
+        min-height: 250px;
+    }
+    
+    .main-image {
+        max-height: 300px;
+    }
+    
+    .luther-blue-product-details {
+        padding: 20px;
+    }
+    
+    /* Further adjust lightbox for very small screens */
+    .lightbox-close {
+        width: 30px;
+        height: 30px;
+        font-size: 20px;
+    }
+}
+
+/* Custom Product Sections - Benefits and How To Use */
+.luther-blue-product-benefits-section,
+.luther-blue-product-how-to-section {
+    width: 100vw; /* Full viewport width */
+    max-width: 100vw;
+    margin-left: calc(-50vw + 50%); /* Center the full-width section */
+    margin-right: calc(-50vw + 50%);
+    padding: 0;
+    background-color: var(--color-light);
+    font-size: 0; /* Remove any whitespace gaps */
+    line-height: 0;
+    overflow: hidden; /* Ensure no overflow */
+    position: relative;
+}
+
+/* Desktop/Mobile Display Controls */
+.desktop-only {
+    display: block;
+}
+
+.mobile-only {
+    display: none;
+    width: 100%;
+    height: auto;
+}
+
+/* Benefits Section Specific Styles */
+.luther-blue-product-benefits-section {
+    border-bottom: var(--border-solid);
+}
+
+.luther-blue-section-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 0; /* Remove any whitespace gaps */
+    line-height: 0;
+    position: relative;
+}
+
+.benefits-container,
+.how-to-container {
+    position: relative;
+    width: 100%;
+}
+
+.luther-blue-section-row {
+    display: flex;
+    flex-wrap: nowrap; /* Prevent wrapping */
+    align-items: stretch;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.benefits-row,
+.how-to-row {
+    position: relative;
+}
+
+/* Image columns */
+.luther-blue-section-image-col {
+    flex: 0 0 50%;
+    width: 50%;
+    max-width: 50%;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    min-height: 500px;
+    overflow: hidden;
+}
+
+.benefits-image-col,
+.how-to-image-col {
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+/* Image wrappers */
+.benefits-image-wrapper,
+.how-to-image-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Images */
+.luther-blue-section-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+}
+
+/* Content columns */
+.luther-blue-section-content-col {
+    flex: 0 0 50%;
+    width: 50%;
+    max-width: 50%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    min-height: 500px;
+}
+
+.benefits-content-col,
+.how-to-content-col {
+    display: flex;
+    align-items: center;
+}
+
+/* Content */
+.luther-blue-section-content {
+    padding: 50px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-left: var(--border-solid);
+    border-right: var(--border-solid);
+}
+
+.benefits-content,
+.how-to-content {
+    padding: 60px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Section Headings and Content */
+.section-heading {
+    font-family: 'Sohne', sans-serif;
+    font-size: 14px;
+    font-weight: bolder;
+    color: var(--color-primary);
+    margin: 0 0 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.2;
+}
+
+.benefits-heading,
+.how-to-heading {
+    color: var(--color-primary);
+    position: relative;
+    padding-top: 15px;
+}
+
+
+.section-content {
+    font-family: var(--font-headings);
+    font-size: 32px;
+    line-height: 1.2;
+    color: var(--color-text);
+}
+
+.benefits-text,
+.how-to-text {
+    margin-top: 10px;
+}
+
+.section-content p {
+    margin-bottom: 15px;
+}
+
+.section-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* Responsive styles for custom sections */
+@media screen and (max-width: 991px) {
+    .luther-blue-product-benefits-section,
+    .luther-blue-product-how-to-section {
+        padding: 40px 20px;
+    }
+    
+    .benefits-content,
+    .how-to-content {
+        padding: 30px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    /* Switch display for desktop/mobile elements */
+    .desktop-only {
+        display: none;
+    }
+    
+    .mobile-only {
+        display: block;
+    }
+    
+    .luther-blue-section-row {
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    
+    .luther-blue-section-image-col,
+    .luther-blue-section-content-col {
+        flex: 0 0 100%;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .luther-blue-section-image-col {
+        min-height: auto;
+    }
+    
+    .benefits-image-col,
+    .how-to-image-col {
+        order: -1;
+        height: auto;
+    }
+    
+    .luther-blue-section-content-col {
+        min-height: auto;
+        padding: 0;
+    }
+    
+    .luther-blue-section-content {
+        padding: 30px 20px;
+    }
+    
+    .benefits-content,
+    .how-to-content {
+        padding: 30px 20px;
+    }
+    
+    .benefits-text,
+    .how-to-text {
+        font-size: 24px;
+    }
+    
+}
+
+@media screen and (max-width: 576px) {
+    .benefits-content,
+    .how-to-content {
+        padding: 20px 15px;
+    }
+    
+    .benefits-text,
+    .how-to-text {
+        font-size: 20px;
+    }
+}
+
+/* Recent Products Carousel */
+.luther-blue-recent-products {
+    padding: 4rem 5%;
+    margin-top: 4rem;
+    border-top: var(--border-solid);
+}
+
+.recent-products-heading {
+    font-family: var(--font-headings);
+    font-size: 2rem;
+    text-align: left;
+    margin-bottom: 2.5rem;
+    color: var(--color-primary);
+}
+
+.recent-products-carousel {
+    position: relative;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+}
+
+.luther-blue-products-row.carousel-track {
+    display: flex;
+    gap: 2rem;
+    padding: 0 2rem;
+    width: max-content;
+    min-height: unset; /* Remove fixed height */
+    margin: 0;
+}
+
+.recent-product-item {
+    flex: 0 0 380px; /* Fixed width matching shop items */
+    width: 380px; /* Match shop item width */
+    background: transparent;
+    padding: 0;
+    box-shadow: none;
+    margin-bottom: 0;
+}
+
+/* Mobile Styles */
+@media (max-width: 991px) {
+    .recent-product-item {
+        flex: 0 0 300px; /* Smaller fixed width for tablet */
+    }
+}
+
+@media (max-width: 767px) {
+    .recent-product-item {
+        flex: 0 0 280px; /* Mobile width */
+    }
+    
+    .luther-blue-products-row.carousel-track {
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+}
+
+/* Scrollbar Styling */
+.recent-products-carousel::-webkit-scrollbar {
+    height: 6px;
+}
+
+.recent-products-carousel::-webkit-scrollbar-track {
+    background: var(--color-background-light);
+}
+
+.recent-products-carousel::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 4px;
+}
+
+.luther-blue-product-details-container {
+    padding: 15px 5px 5px; /* Reduced bottom padding */
+    flex: 0.5;
+}
+
+.luther-blue-product-excerpt-column {
+    width: 100%;
+    padding-right: 0;
+    padding-bottom: 0;
+}
+
+.luther-blue-product-excerpt {
+    font-family: 'Sohne', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    color: #666;
+    line-height: 1.5;
+    margin: 0 0 10px 0;
+}
+
+/* Adjust button spacing */
+.luther-blue-product-actions {
+    padding-top: 10px;
+} 
