@@ -1,0 +1,60 @@
+/* Footer Styles */
+.site-footer {
+    background-color: var(--color-accent-light);
+    padding: 30px 0 30px;
+    border-top: var(--border-solid);
+    border-bottom: var(--border-solid);
+
+}
+
+.footer-widgets {
+    margin-bottom: 40px;
+}
+
+.footer-widget-area {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 30px;
+}
+
+.footer-widget {
+    margin-bottom: 30px;
+}
+
+.footer-widget h4 {
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.footer-widget ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-widget li {
+    margin-bottom: 10px;
+}
+
+.footer-widget a {
+    color: var(--color-text);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-widget a:hover {
+    color: var(--color-accent);
+}
+
+.site-info {
+    text-align: center;
+    font-size: 14px;
+    color: var(--color-text-light);
+    margin-top: 20px;
+} 
+
+.footer-bottom {
+    text-align: center;
+}

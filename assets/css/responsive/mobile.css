@@ -1,0 +1,240 @@
+/* Mobile Styles (767px and down) */
+@media screen and (max-width: 767px) {
+    /* Typography */
+    h1 {
+        font-size: 36px;
+    }
+    
+    h2 {
+        font-size: 28px;
+    }
+    
+    h3 {
+        font-size: 22px;
+    }
+    
+    /* Layout */
+    .container {
+        padding: 0 var(--spacing-sm);
+    }
+    
+    /* .site-content {
+        padding: var(--spacing-md) 0;
+    } */
+    
+    /* Hide desktop header, show mobile header */
+    .desktop-header {
+        display: none;
+    }
+    
+    .mobile-header {
+        display: flex;
+    }
+    
+    /* Cart panel adjustments */
+    .cart-panel {
+        width: 100%;
+    }
+    
+    /* WooCommerce Adjustments */
+    .woocommerce ul.products {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    
+    .woocommerce-cart table.cart td.actions .coupon .input-text {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    .woocommerce-cart table.cart td.actions .coupon .button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    /* Footer Adjustments */
+    .footer-widget-area {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-navigation ul {
+        flex-direction: column;
+    }
+    
+    .footer-navigation li {
+        margin: 5px 0;
+    }
+    
+    /* Grid Adjustments */
+    .two-columns,
+    .three-columns,
+    .four-columns {
+        grid-template-columns: 1fr;
+    }
+
+    body.cart-open .site-overlay,
+    body.menu-open .site-overlay {
+    visibility: hidden;
+    }
+    
+    /* hide cart cross */
+    .close-cart-cross {
+        display: none;
+    }
+
+    .menu-toggle {
+        padding: 0 15px;
+    }
+}
+
+/* Mobile responsive styles for shop page */
+
+@media screen and (max-width: 576px) {
+    /* Products Grid */
+    .products {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    /* Product Item */
+    .product-image-wrapper {
+        min-height: 220px;
+        padding: 15px;
+    }
+    
+    .product-info {
+        padding: 0 15px 15px;
+    }
+    
+    .woocommerce-loop-product__title {
+        font-size: 16px;
+    }
+    
+    .product-description {
+        font-size: 12px;
+        margin-bottom: 15px;
+    }
+    
+    .price {
+        font-size: 12px;
+    }
+    
+    .add_to_cart_button {
+        padding: 12px;
+        font-size: 12px;
+    }
+    
+    /* Shop Header */
+    .woocommerce-products-header__title {
+        font-size: 28px;
+    }
+    
+    /* Shop Controls */
+    .shop-filters {
+        justify-content: space-between;
+    }
+    
+    .woocommerce-ordering select {
+        padding: 6px 25px 6px 10px;
+        font-size: 12px;
+    }
+
+    .menu-toggle {
+        padding: 0 15px;
+    }
+
+    .custom-logo {
+        max-height: 50px;
+        width: 180px;
+    }
+} 
+
+/* Extra Small Devices (Mobile Phones) */
+@media (max-width: 399px) {
+    /* Header */
+    .site-header {
+        padding: 15px 3%;
+    }
+    
+    .custom-logo {
+        max-height: 50px;
+        width: 180px;
+    }
+    
+    .mobile-header {
+        padding: 10px 0;
+    }
+    
+    .menu-toggle span {
+        width: 20px;
+        height: 1.5px;
+        margin-bottom: 4px;
+    }
+    .menu-toggle {
+        padding: 0 15px;
+    }
+
+    .mobile-cart-toggle {
+        font-size: 12px;
+    }
+    
+    /* Mobile Menu */
+    .mobile-menu-close .close-text {
+        font-size: 12px;
+    }
+    
+    #mobile-menu a {
+        font-size: 18px;
+    }
+    
+    /* Content Spacing */
+    .site-content {
+        padding: 0;
+    }
+    
+    .product-image-wrapper {
+        min-height: 180px;
+        padding: 10px;
+    }
+    
+    .product-info {
+        padding: 0 10px 10px;
+    }
+    
+    .woocommerce-loop-product__title {
+        font-size: 14px;
+    }
+    
+    .product-description {
+        font-size: 11px;
+        margin-bottom: 10px;
+    }
+    
+    .price {
+        font-size: 11px;
+    }
+    
+    .add_to_cart_button {
+        padding: 10px;
+        font-size: 11px;
+    }
+    
+    /* Shop Header */
+    .woocommerce-products-header__title {
+        font-size: 24px;
+    }
+}
+
+/* Products Loop Styling Mobile */
+@media (max-width: 767px) {
+    .luther-blue-product-title {
+        font-size: 16px;
+    }
+    .luther-blue-product-item {
+        padding: 30px;
+    }
+
+    .menu-toggle {
+        padding: 0 15px;
+    }
+
+}

@@ -1,0 +1,119 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    color: var(--color-text);
+    line-height: 1.6;
+    background-color: var(--color-background);
+}
+
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-accent);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-light);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-accent);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary);
+}
+
+/* Firefox scrollbar */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-accent) var(--color-light);
+}
+
+/* Custom scrollbar for cart panel */
+.cart-content::-webkit-scrollbar {
+    width: 4px;
+}
+
+.cart-content::-webkit-scrollbar-track {
+    background: var(--color-light);
+    border-radius: 2px;
+}
+
+.cart-content::-webkit-scrollbar-thumb {
+    background: var(--color-accent);
+    border-radius: 2px;
+}
+
+.cart-content::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary);
+}
+
+/* Smooth scrolling for the entire site */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Hide scrollbar on mobile devices while maintaining functionality */
+@media (max-width: 768px) {
+    ::-webkit-scrollbar {
+        width: 4px;
+        height: 4px;
+    }
+    
+    .cart-content::-webkit-scrollbar {
+        width: 2px;
+    }
+}
+
+/* Hide Close Cart Div globally */
+.cart-close { 
+    display: none;
+}
+
+/* Optional: Add custom scrollbar to specific elements */
+.woocommerce-mini-cart,
+.product-description,
+.terms-conditions {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-accent) var(--color-light);
+}
+
+/* Optional: Style scrollbar for horizontal scrolling elements */
+.gallery-scroll::-webkit-scrollbar {
+    height: 4px;
+}
+
+.gallery-scroll::-webkit-scrollbar-track {
+    background: var(--color-light);
+    border-radius: 2px;
+}
+
+.gallery-scroll::-webkit-scrollbar-thumb {
+    background: var(--color-accent);
+    border-radius: 2px;
+} 

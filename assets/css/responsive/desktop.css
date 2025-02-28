@@ -1,0 +1,32 @@
+/* Desktop Styles (1200px and up) */
+/* @media screen and (min-width: 1200px) {
+    .container {
+        padding: 0 var(--spacing-lg);
+    }
+    
+    .site-content {
+        padding: var(--spacing-xl) 0;
+    }
+}  */
+
+
+/* Small Desktop Screens (868px to 979px) */
+@media screen and (min-width: 868px) and (max-width: 979px) {
+    .site-header {
+        padding: 20px 2%;
+    }
+
+    .custom-logo {
+        max-height: 50px;
+        width: 180px;
+    }
+
+    .header-actions li {
+        margin-left: 18px;
+    }
+
+    .primary-navigation li, .header-actions li {
+        margin-right: 18px;
+    }
+
+}
