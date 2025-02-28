@@ -92,8 +92,8 @@
         // Update add to cart behavior
         $('body').on('added_to_cart', function(e, fragments, cart_hash) {
             // Open cart panel when item is added
-            $('#cart-panel').addClass('active');
-            $('body').addClass('cart-open');
+            // $('#cart-panel').addClass('active');
+            // $('body').addClass('cart-open');
             
             // Update cart count
             if (fragments && fragments['span.cart-count']) {

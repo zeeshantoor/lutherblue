@@ -2,7 +2,6 @@
 .site-footer {
     background-color: var(--color-accent-light);
     padding: 30px 0 30px;
-    margin-top: 60px;
     border-top: var(--border-solid);
     border-bottom: var(--border-solid);
 

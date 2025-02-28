@@ -31,7 +31,7 @@
                 // After a short delay, remove the 'added' class
                 setTimeout(function() {
                     $button.removeClass('added');
-                }, 2000);
+                }, 1500);
             }
         });
         

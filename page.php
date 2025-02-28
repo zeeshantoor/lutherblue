@@ -2,6 +2,9 @@
 /**
  * The template for displaying all pages
  */
+if (!defined('ABSPATH')) {
+    exit;
+}
 
 get_header();
 ?>

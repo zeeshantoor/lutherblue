@@ -172,6 +172,14 @@
             margin-top: 0;
             padding: 0 15px 20px;
         }
+        .product-add-to-cart {
+            border-bottom: var(--border-solid);
+            padding-bottom: 40px;
+        }
+
+        .luther-blue-product-benefits-section {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.403);
+        }
         
         /* For variable products, ensure correct order within the form */
         .variations_form.cart {
@@ -369,5 +377,12 @@
     }
     h1.product-title {
         padding: 20px 0;
+    }
+
+    .luther-blue-section-content {
+        border: none;
+    }
+    .how-to-content-col {
+        border: none;
     }
 } 

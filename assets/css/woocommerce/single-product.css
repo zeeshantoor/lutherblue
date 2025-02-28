@@ -38,7 +38,6 @@ body.single-product .entry-content {
     display: flex;
     position: relative;
     align-items: flex-start;
-    margin-bottom: 60px;
     border-top: none;
     border-right: none;
     border-left: var(--border-solid);
@@ -692,4 +691,367 @@ body.lightbox-open {
         height: 30px;
         font-size: 20px;
     }
+}
+
+/* Custom Product Sections - Benefits and How To Use */
+.luther-blue-product-benefits-section,
+.luther-blue-product-how-to-section {
+    width: 100vw; /* Full viewport width */
+    max-width: 100vw;
+    margin-left: calc(-50vw + 50%); /* Center the full-width section */
+    margin-right: calc(-50vw + 50%);
+    padding: 0;
+    background-color: var(--color-light);
+    font-size: 0; /* Remove any whitespace gaps */
+    line-height: 0;
+    overflow: hidden; /* Ensure no overflow */
+    position: relative;
+}
+
+/* Desktop/Mobile Display Controls */
+.desktop-only {
+    display: block;
+}
+
+.mobile-only {
+    display: none;
+    width: 100%;
+    height: auto;
+}
+
+/* Benefits Section Specific Styles */
+.luther-blue-product-benefits-section {
+    border-bottom: var(--border-solid);
+}
+
+.luther-blue-section-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 0; /* Remove any whitespace gaps */
+    line-height: 0;
+    position: relative;
+}
+
+.benefits-container,
+.how-to-container {
+    position: relative;
+    width: 100%;
+}
+
+.luther-blue-section-row {
+    display: flex;
+    flex-wrap: nowrap; /* Prevent wrapping */
+    align-items: stretch;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.benefits-row,
+.how-to-row {
+    position: relative;
+}
+
+/* Image columns */
+.luther-blue-section-image-col {
+    flex: 0 0 50%;
+    width: 50%;
+    max-width: 50%;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    min-height: 500px;
+    overflow: hidden;
+}
+
+.benefits-image-col,
+.how-to-image-col {
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+/* Image wrappers */
+.benefits-image-wrapper,
+.how-to-image-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Images */
+.luther-blue-section-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+}
+
+/* Content columns */
+.luther-blue-section-content-col {
+    flex: 0 0 50%;
+    width: 50%;
+    max-width: 50%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    min-height: 500px;
+}
+
+.benefits-content-col,
+.how-to-content-col {
+    display: flex;
+    align-items: center;
+}
+
+/* Content */
+.luther-blue-section-content {
+    padding: 50px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-left: var(--border-solid);
+    border-right: var(--border-solid);
+}
+
+.benefits-content,
+.how-to-content {
+    padding: 60px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Section Headings and Content */
+.section-heading {
+    font-family: 'Sohne', sans-serif;
+    font-size: 14px;
+    font-weight: bolder;
+    color: var(--color-primary);
+    margin: 0 0 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.2;
+}
+
+.benefits-heading,
+.how-to-heading {
+    color: var(--color-primary);
+    position: relative;
+    padding-top: 15px;
+}
+
+
+.section-content {
+    font-family: var(--font-headings);
+    font-size: 32px;
+    line-height: 1.2;
+    color: var(--color-text);
+}
+
+.benefits-text,
+.how-to-text {
+    margin-top: 10px;
+}
+
+.section-content p {
+    margin-bottom: 15px;
+}
+
+.section-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* Responsive styles for custom sections */
+@media screen and (max-width: 991px) {
+    .luther-blue-product-benefits-section,
+    .luther-blue-product-how-to-section {
+        padding: 40px 20px;
+    }
+    
+    .benefits-content,
+    .how-to-content {
+        padding: 30px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    /* Switch display for desktop/mobile elements */
+    .desktop-only {
+        display: none;
+    }
+    
+    .mobile-only {
+        display: block;
+    }
+    
+    .luther-blue-section-row {
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    
+    .luther-blue-section-image-col,
+    .luther-blue-section-content-col {
+        flex: 0 0 100%;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .luther-blue-section-image-col {
+        min-height: auto;
+    }
+    
+    .benefits-image-col,
+    .how-to-image-col {
+        order: -1;
+        height: auto;
+    }
+    
+    .luther-blue-section-content-col {
+        min-height: auto;
+        padding: 0;
+    }
+    
+    .luther-blue-section-content {
+        padding: 30px 20px;
+    }
+    
+    .benefits-content,
+    .how-to-content {
+        padding: 30px 20px;
+    }
+    
+    .benefits-text,
+    .how-to-text {
+        font-size: 24px;
+    }
+    
+}
+
+@media screen and (max-width: 576px) {
+    .benefits-content,
+    .how-to-content {
+        padding: 20px 15px;
+    }
+    
+    .benefits-text,
+    .how-to-text {
+        font-size: 20px;
+    }
+}
+
+/* Recent Products Carousel */
+.luther-blue-recent-products {
+    padding: 4rem 5%;
+    margin-top: 4rem;
+    border-top: var(--border-solid);
+}
+
+.recent-products-heading {
+    font-family: var(--font-headings);
+    font-size: 2rem;
+    text-align: left;
+    margin-bottom: 2.5rem;
+    color: var(--color-primary);
+}
+
+.recent-products-carousel {
+    position: relative;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+}
+
+.luther-blue-products-row.carousel-track {
+    display: flex;
+    gap: 2rem;
+    padding: 0 2rem;
+    width: max-content;
+    min-height: unset; /* Remove fixed height */
+    margin: 0;
+}
+
+.recent-product-item {
+    flex: 0 0 380px; /* Fixed width matching shop items */
+    width: 380px; /* Match shop item width */
+    background: transparent;
+    padding: 0;
+    box-shadow: none;
+    margin-bottom: 0;
+}
+
+/* Mobile Styles */
+@media (max-width: 991px) {
+    .recent-product-item {
+        flex: 0 0 300px; /* Smaller fixed width for tablet */
+    }
+}
+
+@media (max-width: 767px) {
+    .recent-product-item {
+        flex: 0 0 280px; /* Mobile width */
+    }
+    
+    .luther-blue-products-row.carousel-track {
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+}
+
+/* Scrollbar Styling */
+.recent-products-carousel::-webkit-scrollbar {
+    height: 6px;
+}
+
+.recent-products-carousel::-webkit-scrollbar-track {
+    background: var(--color-background-light);
+}
+
+.recent-products-carousel::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 4px;
+}
+
+.luther-blue-product-details-container {
+    padding: 15px 5px 5px; /* Reduced bottom padding */
+    flex: 0.5;
+}
+
+.luther-blue-product-excerpt-column {
+    width: 100%;
+    padding-right: 0;
+    padding-bottom: 0;
+}
+
+.luther-blue-product-excerpt {
+    font-family: 'Sohne', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    color: #666;
+    line-height: 1.5;
+    margin: 0 0 10px 0;
+}
+
+/* Adjust button spacing */
+.luther-blue-product-actions {
+    padding-top: 10px;
 } 

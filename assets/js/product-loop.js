@@ -107,7 +107,7 @@
                     setTimeout(function() {
                         $button.removeClass('added pulse-animation');
                         $button.html(originalText);
-                    }, 3000);
+                    }, 1500);
                 },
                 error: function() {
                     // Show error message

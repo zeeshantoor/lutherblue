@@ -2,6 +2,10 @@
 /**
  * The template for displaying the footer
  */
+
+ if (!defined('ABSPATH')) {
+    exit;
+}
 ?>
 
     </main><!-- #main -->

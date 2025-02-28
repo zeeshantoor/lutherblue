@@ -2,6 +2,9 @@
 /**
  * The main template file
  */
+if (!defined('ABSPATH')) {
+    exit;
+}
 
 get_header();
 ?>

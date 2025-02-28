@@ -2,6 +2,10 @@
 /**
  * The header for our theme
  */
+
+ if (!defined('ABSPATH')) {
+    exit;
+}
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>

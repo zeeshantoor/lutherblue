@@ -220,7 +220,93 @@ do_action('woocommerce_before_main_content');
                 </div>
             </div>
 
+            <?php
+            // "The Benefits" Section - Image Left, Text Right
+            if (function_exists('get_field') && get_field('the_benefits_section')) {
+                $benefits_section = get_field('the_benefits_section');
+                $benefits_image = isset($benefits_section['benefits_image']) ? $benefits_section['benefits_image'] : '';
+                $benefits_content = isset($benefits_section['benefits_content']) ? $benefits_section['benefits_content'] : '';
+                
+                if ($benefits_image || $benefits_content) {
+                    ?>
+                    <div class="luther-blue-product-benefits-section">
+                        <div class="luther-blue-section-container benefits-container">
+                            <div class="luther-blue-section-row benefits-row">
+                                <div class="luther-blue-section-image-col benefits-image-col">
+                                    <?php if ($benefits_image) : ?>
+                                        <!-- Desktop image (background) -->
+                                        <div class="benefits-image-wrapper desktop-only">
+                                            <div class="luther-blue-section-image benefits-image" style="background-image: url('<?php echo esc_url($benefits_image); ?>');"></div>
+                                        </div>
+                                        <!-- Mobile image (simple img tag) -->
+                                        <img src="<?php echo esc_url($benefits_image); ?>" alt="The Benefits" class="mobile-only">
+                                    <?php endif; ?>
+                                </div>
+                                <div class="luther-blue-section-content-col benefits-content-col">
+                                    <?php if ($benefits_content) : ?>
+                                        <div class="luther-blue-section-content benefits-content">
+                                            <h3 class="section-heading benefits-heading">The Benefits</h3>
+                                            <div class="section-content benefits-text">
+                                                <?php echo wpautop($benefits_content); ?>
+                                            </div>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                }
+            }
+            
+            // "How To Use" Section - Text Left, Image Right
+            if (function_exists('get_field') && get_field('how_to_use_section')) {
+                $how_to_section = get_field('how_to_use_section');
+                $how_to_image = isset($how_to_section['how_to_image']) ? $how_to_section['how_to_image'] : '';
+                $how_to_content = isset($how_to_section['how_to_content']) ? $how_to_section['how_to_content'] : '';
+                
+                if ($how_to_image || $how_to_content) {
+                    ?>
+                    <div class="luther-blue-product-how-to-section">
+                        <div class="luther-blue-section-container how-to-container">
+                            <div class="luther-blue-section-row how-to-row">
+                                <div class="luther-blue-section-content-col how-to-content-col">
+                                    <?php if ($how_to_content) : ?>
+                                        <div class="luther-blue-section-content how-to-content">
+                                            <h3 class="section-heading how-to-heading">How To Use</h3>
+                                            <div class="section-content how-to-text">
+                                                <?php echo wpautop($how_to_content); ?>
+                                            </div>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="luther-blue-section-image-col how-to-image-col">
+                                    <?php if ($how_to_image) : ?>
+                                        <!-- Desktop image (background) -->
+                                        <div class="how-to-image-wrapper desktop-only">
+                                            <div class="luther-blue-section-image how-to-image" style="background-image: url('<?php echo esc_url($how_to_image); ?>');"></div>
+                                        </div>
+                                        <!-- Mobile image (simple img tag) -->
+                                        <img src="<?php echo esc_url($how_to_image); ?>" alt="How To Use" class="mobile-only">
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                }
+            }
+            ?>
+
         <?php endwhile; ?>
+
+        <!-- Add You May Also Like Section -->
+        <?php 
+        if (file_exists(get_template_directory() . '/woocommerce/single-product/recent-products.php')) {
+            include get_template_directory() . '/woocommerce/single-product/recent-products.php';
+        }
+        ?>
+        
     </div>
 </div>
 
