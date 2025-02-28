@@ -28,7 +28,7 @@ require_once get_template_directory() . '/inc/helpers/media.php';
 if (class_exists('WooCommerce')) {
     require_once get_template_directory() . '/inc/woocommerce/setup.php';
     require_once get_template_directory() . '/inc/woocommerce/template-functions.php';
-    require_once get_template_directory() . '/inc/woocommerce/ajax-cart.php';
+    // require_once get_template_directory() . '/inc/woocommerce/ajax-cart.php';
     require_once get_template_directory() . '/inc/woocommerce/shop.php';
     require_once get_template_directory() . '/inc/woocommerce/product-loop.php';
     require_once get_template_directory() . '/inc/woocommerce/acf-fields.php';

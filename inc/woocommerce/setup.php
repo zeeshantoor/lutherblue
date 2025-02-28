@@ -68,12 +68,6 @@ add_filter('woocommerce_proceed_to_checkout_button_text', 'luther_blue_modify_ch
 function luther_blue_remove_cart_hooks() {
     // Remove cart menu item from My Account
     remove_action('woocommerce_account_cart_endpoint', 'woocommerce_account_cart_endpoint_content');
-    
-    // Remove cart page related notices
-    remove_action('woocommerce_before_cart', 'woocommerce_output_all_notices', 10);
-    
-    // Remove cart totals from cart page
-    remove_action('woocommerce_cart_collaterals', 'woocommerce_cart_totals', 10);
 }
 add_action('init', 'luther_blue_remove_cart_hooks');
 
